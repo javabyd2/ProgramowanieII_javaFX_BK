@@ -58,9 +58,9 @@
                   </GridPane>
                   <ButtonBar layoutX="15.0" layoutY="306.0" prefHeight="46.0" prefWidth="241.0">
                     <buttons>
-                        <Button mnemonicParsing="false" text="Dodaj" />
-                        <Button mnemonicParsing="false" text="Edytuj" />
-                      <Button mnemonicParsing="false" text="Usun" />
+                        <Button fx:id="addButton" mnemonicParsing="false" style="-fx-base: #b6e7c9;" text="Dodaj" />
+                        <Button fx:id="editButton" mnemonicParsing="false" style="-fx-base: #55a2c6;" text="Edytuj" />
+                      <Button fx:id="removeButton" mnemonicParsing="false" style="-fx-base: #e56464;" text="Usun" />
                     </buttons>
                   </ButtonBar>
                </children>

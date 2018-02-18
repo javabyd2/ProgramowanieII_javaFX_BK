@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane fx:controller="javaFX.Controller" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="javaFX.Controller">
    <children>
       <SplitPane dividerPositions="0.5" layoutX="209.0" layoutY="120.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -48,19 +48,19 @@
                         <Label text="Miasto" GridPane.rowIndex="3" />
                         <Label text="Kod pocztowy" GridPane.rowIndex="4" />
                         <Label text="Data urodzenia" GridPane.rowIndex="5" />
-                        <Label text="Label" GridPane.columnIndex="1" />
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <Label text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <Label fx:id="firstnameLabel" text="Label" GridPane.columnIndex="1" />
+                        <Label fx:id="lastnameLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="streetLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="cityLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <Label fx:id="postalCodeLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <Label fx:id="birthdayLabel" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                      </children>
                   </GridPane>
                   <ButtonBar layoutX="15.0" layoutY="306.0" prefHeight="46.0" prefWidth="241.0">
                     <buttons>
-                        <Button mnemonicParsing="false" text="Dodaj" />
-                        <Button mnemonicParsing="false" text="Edytuj" />
-                      <Button mnemonicParsing="false" text="Usun" />
+                        <Button fx:id="addButton" mnemonicParsing="false" style="-fx-base: #b6e7c9;" text="Dodaj" />
+                        <Button fx:id="editButton" mnemonicParsing="false" style="-fx-base: #55a2c6;" text="Edytuj" />
+                      <Button fx:id="removeButton" mnemonicParsing="false" style="-fx-base: #e56464;" text="Usun" />
                     </buttons>
                   </ButtonBar>
                </children>

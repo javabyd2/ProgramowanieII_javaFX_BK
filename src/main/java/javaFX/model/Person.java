@@ -15,6 +15,10 @@ public class Person {
     public Person(String firstname, String lastname){
         this.firstname = new SimpleStringProperty(firstname);
         this.lastname = new SimpleStringProperty(lastname);
+        this.street = new SimpleStringProperty("Default street");
+        this.city = new SimpleStringProperty("Default city");
+        this.postalCode = new SimpleStringProperty("Default postal code");
+        this.birthday = new SimpleStringProperty("Default birtday");
     }
 
     public String getFirstname() {
