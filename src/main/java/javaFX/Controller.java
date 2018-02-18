@@ -1,20 +1,14 @@
 package javaFX;
 
 import javaFX.model.Person;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseEvent;
 import java.io.IOException;
 
 
@@ -22,6 +16,8 @@ public class Controller {
 
     //referencja klasy main
     private Main main;
+
+    private int selectedRecordIndex;
 
     @FXML
     private Button addButton;
@@ -68,12 +64,12 @@ public class Controller {
             @Override
             public void handle(javafx.event.ActionEvent event) {
                 addPerson();
-
             }
         });
         removeButton.setOnAction(new EventHandler<javafx.event.ActionEvent>() {
             @Override
             public void handle(javafx.event.ActionEvent event) {
+
                 removePerson();
             }
         });
@@ -81,7 +77,6 @@ public class Controller {
             @Override
             public void handle(javafx.event.ActionEvent event) {
                 editPerson();
-                firstnameColumn.setStyle("-fx-base: #55a2c6;");
 
             }
         });
@@ -99,28 +94,32 @@ public class Controller {
     }
 
     public void addPerson(){
+        AddPersonController controller = newAddPersonFormLoader("Adding Person").getController();
+        controller.setMain(this.main);
+    }
+
+    public FXMLLoader newAddPersonFormLoader(String title){
+        FXMLLoader formLoader = new FXMLLoader(getClass().getClassLoader().getResource("AddPersonFormLayout.fxml"));
+        createStage(formLoader, title);
+        return formLoader;
+    }
+
+    public FXMLLoader newEditPersonFormLoader(String title){
+        FXMLLoader formLoader = new FXMLLoader(getClass().getClassLoader().getResource("EditPersonFormLayout.fxml"));
+        createStage(formLoader, title);
+        return formLoader;
+    }
+
+    public void createStage(FXMLLoader loader, String title){
         try {
-            FXMLLoader formLoader = new FXMLLoader(getClass().getClassLoader().getResource("FormLayout.fxml"));
-            Parent root1 = formLoader.load();
+            Parent root1 = loader.load();
             Stage stage = new Stage();
-            stage.setTitle("Adding a new person");
+            stage.setTitle(title);
             stage.setScene(new Scene(root1));
             stage.show();
-
-            AddControler controler = formLoader.getController();
-            controler.setMain(this.main);
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-//
-//        acceptFormButton.setOnAction(new EventHandler<javafx.event.ActionEvent>() {
-//            @Override
-//            public void handle(javafx.event.ActionEvent event) {
-//                main.addPerson();
-//            }
-//        });
-
     }
 
     public void removePerson(){
@@ -135,7 +134,11 @@ public class Controller {
     }
 
     public void editPerson(){
-        this.main.editPerson();
+        EditPersonController controller = newEditPersonFormLoader("Editing Person").getController();
+
+        controller.setSelectedRecordIndex(personTableView.getSelectionModel().getSelectedIndex());
+
+        controller.setMain(this.main);
     }
 
     public void setMain(Main main){

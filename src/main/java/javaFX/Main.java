@@ -4,19 +4,10 @@ import javaFX.model.Person;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyCodeCombination;
-import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -37,8 +28,9 @@ public class Main extends Application {
         return personObservableList;
     }
 
-    public void addPerson(){
-        personObservableList.add(new Person("AddedPerson", "AddedKowalski"));
+    public void editPerson(String firstName, String lastName, int index){
+        personObservableList.get(index).setFirstname(firstName);
+        personObservableList.get(index).setLastname(lastName);
     }
 
     public void addPerson(String firstName, String lastName){
@@ -47,10 +39,6 @@ public class Main extends Application {
 
     public void removePerson(int index){
         personObservableList.remove(index);
-    }
-
-    public void editPerson(){
-        personObservableList.forEach((Person person) -> person.setCity("Warsaw"));
     }
 
     @Override
@@ -63,10 +51,6 @@ public class Main extends Application {
 
         Controller controller = loader.getController();
         controller.setMain(this);
-
-        //loader = new FXMLLoader(getClass().getClassLoader().getResource("FormLayout.fxml"));
-        //AnchorPane addPersonForm = loader.load();
-
 
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 800, 600));
